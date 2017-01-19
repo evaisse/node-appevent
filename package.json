@@ -1,0 +1,30 @@
+{
+  "name": "appevent",
+  "version": "0.9.1",
+  "description": "A simple nodejs app container to build evented apps with env/argv based configuration",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evaisse/node-appevent.git"
+  },
+  "keywords": [
+    "events",
+    "app",
+    "container"
+  ],
+  "author": "evaisse@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evaisse/node-appevent/issues"
+  },
+  "homepage": "https://github.com/evaisse/node-appevent#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "jsonconsole": "^1.0.0",
+    "nconf": "^0.8.4",
+    "pmx": "^1.0.1"
+  }
+}
