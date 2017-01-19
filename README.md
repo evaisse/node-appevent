@@ -2,15 +2,20 @@
 
 A basic nodejs app container to build evented apps with env/argv based configuration.
 
- - Almost a non-existant API.
- - Basic wrapper around `process` global to setup an event-based application.
- - PM2/PMX integration to abstract process usage & metrics 
- - out-of-the box JSON logging with trace
- - runtime commands using PM2 `trigger`
- - system based configuration regarding `process.env` merged with `.env` file on the root folder, 
+Suits you if :
+
+ - You like almost non-existant APIs.
+ - Conventions over configuration.
+ - Don't mind using `process` global to setup an event-based application.
+ - System based configuration regarding `process.env` merged with `.env` file on the root folder, 
 and finally overrided by `yargs` command line arguments.
+ - De facto PM2/PMX deployment/integration to abstract process usage & metrics (not required)
+ - out-of-the box JSON logging (bunyan compliant) with trace to stderr & stdout
+ - runtime command using PM2 `trigger` actions
+
 
 # usage
+
 
 A basic usage 
 
