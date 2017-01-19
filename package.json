@@ -23,7 +23,7 @@
   "homepage": "https://github.com/evaisse/node-appevent#readme",
   "dependencies": {
     "dotenv": "^4.0.0",
-    "jsonconsole": "^1.0.0",
+    "jsonconsole": "^1.0.1",
     "nconf": "^0.8.4",
     "pmx": "^1.0.1"
   }

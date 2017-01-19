@@ -2,9 +2,11 @@
 
 A basic nodejs app container to build evented apps with env/argv based configuration.
 
+Only 3 events, `boot`, `ready`, `start`.
+
 Suits you if :
 
- - You like almost non-existant APIs.
+ - You like almost non-existant APIs. 
  - Conventions over configuration.
  - Don't mind using `process` global to setup an event-based application.
  - System based configuration regarding `process.env` merged with `.env` file on the root folder, 
@@ -21,8 +23,6 @@ A basic usage
 
 
 ```javascript
-
-
 var start = require('appevent')();
 
 /*
@@ -38,29 +38,38 @@ process.once('boot', function MyModule() {
         default: "nope"
     };
 
-    /* 
-        configuration/registration done
-        eventually inform other module or passing an API
+});
+
+/*
+    Add another module that just have to bind itself to `boot`, `ready`, `start`
+ */ 
+process.on('boot', require('my-middleware').boot);
+
+
+/* 
+    configuration/registration done
+    eventually inform other module or passing an API
+ */
+process.on("ready", function () {
+    process.emit('boot:mymodule', {
+        myApi: () => {}, // custom api method;
+    });
+});
+
+
+/*
+    On start you can start your servers 
+ */
+process.once('start', function () {
+
+    /*
+        All configuration & dependencies merged,  
+        you can use config to setup your module
      */
-    process.on("ready", function () {
-        process.emit('boot:mymodule', {
-            myApi: () => {}, // custom api method;
-        });
-    });
-
-    process.once('start', function () {
-
-        /*
-            All configuration & dependencies merged,  
-            you can use config to setup your module
-         */
-        console.log(process.env.FOO_BAR);
-
-    });
+    console.log(process.env.FOO_BAR);
 
 });
 
-process.on('boot', require('my-middleware').boot);
 
 
 /*
