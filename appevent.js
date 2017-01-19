@@ -89,7 +89,6 @@ module.exports = function () {
     return function () {
         process.emit('boot');
         process.emit('ready');
-        console.log('Start application with configuration ' + util.inspect(process.env));
         process.emit('start');
     };
 
