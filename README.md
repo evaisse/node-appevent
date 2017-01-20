@@ -2,7 +2,7 @@
 
 A basic nodejs app container to build evented apps with env/argv based configuration.
 
-Only 3 events, `boot`, `ready`, `start`.
+Only 3 events, `load`, `ready`, `start`.
 
 Suits you if :
 
@@ -26,9 +26,9 @@ A basic usage
 var start = require('appevent')();
 
 /*
-    Register module on boot
+    Register module on load
  */
-process.once('boot', function MyModule() {
+process.once('load', function MyModule() {
     
     /*
         Do some registration works
@@ -41,9 +41,9 @@ process.once('boot', function MyModule() {
 });
 
 /*
-    Add another module that just have to bind itself to `boot`, `ready`, `start`
+    Add another module that just have to bind itself to `load`, `ready`, `start`
  */ 
-process.on('boot', require('my-middleware').boot);
+process.on('load', require('my-middleware').load);
 
 
 /* 
@@ -51,7 +51,7 @@ process.on('boot', require('my-middleware').boot);
     eventually inform other module or passing an API
  */
 process.on("ready", function () {
-    process.emit('boot:mymodule', {
+    process.emit('load:mymodule', {
         myApi: () => {}, // custom api method;
     });
 });

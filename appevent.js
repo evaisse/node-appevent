@@ -79,15 +79,16 @@ var buildEnvironmentConfig = function () {
 }
 
 
-
+/**
+ * Exports a start() method
+ */
 module.exports = function () {
 
     process.args = process.args || defaultConfig;
-
     process.once('ready', buildEnvironmentConfig);
 
     return function () {
-        process.emit('boot');
+        process.emit('load');
         process.emit('ready');
         process.emit('start');
     };
